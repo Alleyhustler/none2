@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Overlay Tool</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #666666;
+        }
+        .container {
+            text-align: center;
+            color: white;
+            background-color: #000000;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        #canvas-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        #background-image {
+            max-width: 100%;
+            max-height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #overlay-image {
+            position: absolute;
+            cursor: move;
+            border: 1px solid #333;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .additional-content {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .our-fridges {
+            margin-top: 40px;
+        }
+        .fridge-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .fridge-grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .fridge-grid-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .fridge-grid-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .hover-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .fridge-grid-item:hover .hover-text {
+            opacity: 1;
+        }
+        .tokenomics-section {
+            margin-top: 40px;
+        }
+        .tokenomics-title {
+            margin-bottom: 20px;
+        }
+        .tokenomics-title img {
+            max-width: 100%;
+            height: auto;
+        }
+        .tokenomics-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .tokenomics-images .tokenomics-grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .tokenomics-images .tokenomics-grid-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .tokenomics-images .tokenomics-grid-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+ 
+
+/* Social media icons */
+.social-icons {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons img {
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+    </style>
+</head>
+<body>
+    <!-- Social media icons -->
+    <div class="social-icons">
+        <a href="https://x.com/WhatsInFridge_" target="_blank">
+            <img src="images/image-removebg-preview (21).png" alt="Twitter">
+        </a>
+        <a href="https://t.me/+9_xdFfg_z98xMmQ8" target="_blank">
+            <img src="images/telegram_icon__1_-removebg-preview.png" alt="Telegram">
+        </a>
+    </div>
+    <div class="container">
+        <!-- Replace the text title with an image -->
+        <img src="images/What’s In Fridge.png" alt="Upload and Overlay Image" style="max-width: 100%; height: auto;">
+        <br><br>
+        <input type="file" id="upload" accept="image/*">
+        <br><br>
+        <div id="canvas-container">
+            <img id="background-image" src="images/pumpfun main image decision.jpg" alt="Background Image">
+            <img id="overlay-image" src="" alt="Overlay Image" draggable="false">
+        </div>
+        <br><br>
+
+        <!-- Additional Content Section -->
+        <div class="additional-content">
+            <h2>Right or Wrong?- $DECISION</h2>
+            <p>Make the right decision by reflecting on your values, weighing your options, and trusting your judgment for a meaningful and wise outcome.
+
+
+
+
+
+
+            </p>
+        </div>
+
+        <!-- Our Fridges Section -->
+        <div class="our-fridges">
+            <!-- Replace the text title with an image -->
+            <img src="images/What’s In Fridge (1).png" alt="Our Fridges" style="max-width: 100%; height: auto;">
+            <div class="fridge-grid">
+                <div class="fridge-grid-item">
+                    <img src="images/HOLD $DECISION (1).png" alt="Fridge 1">
+                    <div class="hover-text">CAT IS RIGHT</div>
+                </div>
+                <div class="fridge-grid-item">
+                    <img src="images/HOLD $DECISION (2).png" alt="Fridge 2">
+                    <div class="hover-text">PIZZA IS RIGHT</div>
+                </div>
+                <div class="fridge-grid-item">
+                    <img src="images/HOLD $DECISION (3).png" alt="Fridge 3">
+                    <div class="hover-text">SOLANA IS RIGHT</div>
+                </div>
+                <div class="fridge-grid-item">
+                    <img src="images/HOLD $DECISION (4).png" alt="Fridge 4">
+                    <div class="hover-text">TRUMP IS RIGHT</div>
+                </div>
+                <div class="fridge-grid-item">
+                    <img src="images/HOLD $DECISION (6).png" alt="Fridge 5">
+                    <div class="hover-text">PLAYSTATION IS RIGHT</div>
+                </div>
+                <div class="fridge-grid-item">
+                    <img src="images/HOLD $DECISION (5).png" alt="Fridge 6">
+                    <div class="hover-text">APPLE IS RIGHT</div>
+                </div>
+                <div class="fridge-grid-item">
+                    <img src="images/HOLD $DECISION.png" alt="Fridge 7">
+                    <div class="hover-text">HOLDING $DECISION IS RIGHT</div>
+                </div>
+                <div class="fridge-grid-item">
+                    <img src="images/HOLD $DECISION (7).png" alt="Fridge 8">
+                    <div class="hover-text">MC IS RIGHT</div>
+                </div>
+                <div class="fridge-grid-item">
+                    <img src="images/HOLD $DECISION (8).png" alt="Fridge 9">
+                    <div class="hover-text">PUMPFUN IS RIGHT</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tokenomics Section -->
+        <div class="tokenomics-section">
+            <div class="tokenomics-title">
+                <img src="images/tokenomics (3).png" alt="Tokenomics Title">
+            </div>
+            <div class="tokenomics-images">
+                <div class="tokenomics-grid-item">
+                    <img src="images/tokenomics (1).png" alt="Tokenomics 1">
+                </div>
+                <div class="tokenomics-grid-item">
+                    <img src="images/tokenomics (2).png" alt="Tokenomics 2">
+                </div>
+                <div class="tokenomics-grid-item">
+                    <img src="images/tokenomics.png" alt="Tokenomics 3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
